@@ -15,10 +15,10 @@ from langchain_core.output_parsers import StrOutputParser
 
 # from langchain_anthropic import ChatAnthropic
 
-embeddings=OpenAIEmbeddings(model="text-embedding-3-small")
+# embeddings=OpenAIEmbeddings(model="text-embedding-3-small")
 
-model = "gpt-4o-mini"
-llm = ChatOpenAI(model_name=model, temperature=0)
+# model = "gpt-4o-mini"
+# llm = ChatOpenAI(model_name=model, temperature=0)
 
 template = PromptTemplate.from_template(
     """You are an assistant for question-answering tasks. 
@@ -51,6 +51,12 @@ def main():
         os.environ["OPENAI_API_KEY"] = openAI_api_key
 
         "[Get an OpenAI API KEY]"
+
+    embeddings=OpenAIEmbeddings(model="text-embedding-3-small")
+
+    model = "gpt-4o-mini"
+    llm = ChatOpenAI(model_name=model, temperature=0)
+
 
     if prompt := st.chat_input():
         
