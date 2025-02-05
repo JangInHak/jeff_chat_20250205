@@ -52,6 +52,9 @@ def main():
 
     #     "[Get an OpenAI API KEY]"
     with st.sidebar:
+        openAI_api_key = st.text_input("OpenAI API Key", key="openai_api_key", type="password")
+        os.environ["OPENAI_API_KEY"] = openAI_api_key
+        
         anthropic_api_key = st.text_input("Anthropic API Key", key="anthropic_api_key", type="password")
         os.environ["ANTHROPIC_API_KEY"] = anthropic_api_key
 
