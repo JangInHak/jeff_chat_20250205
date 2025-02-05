@@ -54,7 +54,8 @@ def main():
 
     embeddings=OpenAIEmbeddings(model="text-embedding-3-small")
 
-    model = "gpt-4o-mini"
+    # model = "gpt-4o-mini"
+    model = "gpt-4o"
     llm = ChatOpenAI(model_name=model, temperature=0)
 
 
