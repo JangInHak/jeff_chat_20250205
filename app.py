@@ -13,7 +13,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 
-# from langchain_anthropic import ChatAnthropic
+from langchain_anthropic import ChatAnthropic
 
 # embeddings=OpenAIEmbeddings(model="text-embedding-3-small")
 
@@ -46,18 +46,26 @@ for msg in st.session_state.messages:
 
 def main():
 
+    # with st.sidebar:
+    #     openAI_api_key = st.text_input("OpenAI API Key", key="openai_api_key", type="password")
+    #     os.environ["OPENAI_API_KEY"] = openAI_api_key
+
+    #     "[Get an OpenAI API KEY]"
     with st.sidebar:
-        openAI_api_key = st.text_input("OpenAI API Key", key="openai_api_key", type="password")
-        os.environ["OPENAI_API_KEY"] = openAI_api_key
+        anthropic_api_key = st.text_input("Anthropic API Key", key="anthropic_api_key", type="password")
+        os.environ["ANTHROPIC_API_KEY"] = anthropic_api_key
 
         "[Get an OpenAI API KEY]"
 
     embeddings=OpenAIEmbeddings(model="text-embedding-3-small")
 
     # model = "gpt-4o-mini"
-    # model = "gpt-4o"
-    model = "gpt-3.5-turbo"
-    llm = ChatOpenAI(model_name=model, temperature=0)
+    # # model = "gpt-4o"
+    # # model = "gpt-3.5-turbo"
+    # llm = ChatOpenAI(model_name=model, temperature=0)
+
+    model = "claude-3-haiku-20240307"
+    llm = ChatAnthropic(model=model, temperature=0)
 
 
     if prompt := st.chat_input():
